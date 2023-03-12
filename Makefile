@@ -7,10 +7,11 @@ LDLIBS=-lpapi
 
 .PHONY: clean all
 
-all: soe_basic
+all: basic
 
-%: src/%.cpp 
-	$(CXX) $(CXXFLAGS) $< -o bin/$@.out $(LDLIBS)
+%: src/soe%.cpp 
+	@mkdir -p bin/
+	$(CXX) $(CXXFLAGS) $< -o bin/soe$@.out $(LDLIBS)
 
 clean:
 	$(RM) bin/*.out
