@@ -7,7 +7,7 @@ LDLIBS=-lpapi
 
 .PHONY: clean all
 
-all: basic
+all: basic multiples
 
 %: src/soe%.cpp 
 	@mkdir -p bin/
