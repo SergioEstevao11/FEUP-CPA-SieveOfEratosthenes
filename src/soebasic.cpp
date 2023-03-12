@@ -10,6 +10,7 @@
 #include <vector>
 #include "soehelpers.h"
 
+
 static constexpr std::uint64_t N = 1 << 25;
 
 int
@@ -25,7 +26,7 @@ main(void)
     
     do {
 
-        for (std::uint64_t i = k * k; i < N; i += 2 * k) {
+        for (std::uint64_t i = k * k; i < N; i += 2) {
             if (i % k == 0)
                 primes[i >> 1] = true;
         }
