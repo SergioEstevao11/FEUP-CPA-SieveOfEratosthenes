@@ -11,7 +11,7 @@
 #include "soehelpers.h"
 
 
-static constexpr std::uint64_t N = 1 << 25;
+static constexpr std::uint64_t N = 1'000'000;
 
 int
 main(void)
@@ -27,8 +27,7 @@ main(void)
     do {
 
         for (std::uint64_t i = k * k; i < N; i += 2) {
-            if (i % k == 0)
-                primes[i >> 1] = true;
+            primes[i >> 1] = primes[i >> 1] || (i % k == 0);
         }
 
         do {
@@ -40,9 +39,11 @@ main(void)
     const auto end = std::chrono::steady_clock::now();
     helper.stop();
     
-    const auto elapsed = end - start;
-    cpa::sieve_of_erastothenes::report(helper, elapsed, N);
     cpa::sieve_of_erastothenes::print(primes, N, std::cerr);
+
+    const auto elapsed = end - start;
+    const auto computed = std::erase(primes, false);
+    cpa::sieve_of_erastothenes::report(helper, N, computed, elapsed);
 
     return 0;
 }
