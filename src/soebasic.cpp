@@ -5,7 +5,6 @@
  *      Miguel Rodrigues <up201906042@edu.fe.up.pt>
  *      Sérgio Estêvão <up201905680@edu.fe.up.pt>
  */
-#include <algorithm>
 #include <cstdint>
 #include <chrono>
 #include <vector>
@@ -31,8 +30,9 @@ main(void)
             primes[i >> 1] = primes[i >> 1] || (i % k == 0);
         }
 
-        auto it = std::find(primes.cbegin() + (k >> 1) + 1, primes.cend(), false);
-        k = std::distance(primes.cbegin(), it) * 2 + 1;
+        do {
+            k += 2;
+        } while (k * k <= N && primes[k >> 1]);
         
     } while (k * k <= N);
 
