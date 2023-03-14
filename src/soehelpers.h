@@ -32,7 +32,7 @@ public:
         if (retval != PAPI_OK)
             handle_error("PAPI_create_eventset");
 
-        retval = PAPI_add_events(eventset, event_codes.data(), event_codes.size());
+        retval = PAPI_add_events(eventset, event_codes.data(), static_cast<int>(event_codes.size()));
         if (retval != PAPI_OK)
             handle_error("PAPI_add_events");
     }
@@ -65,7 +65,7 @@ public:
         if (retval != PAPI_OK)
             handle_error("PAPI_reset");
 
-        retval = PAPI_remove_events(eventset, event_codes.data(), event_codes.size());
+        retval = PAPI_remove_events(eventset, event_codes.data(), static_cast<int>(event_codes.size()));
         if (retval != PAPI_OK)
             handle_error("PAPI_remove_events");
 
