@@ -6,8 +6,8 @@
  *      Sérgio Estêvão <up201905680@edu.fe.up.pt>
  */
 #include <algorithm>
-#include <cstdint>
 #include <chrono>
+#include <cstdint>
 #include <vector>
 #include "soehelpers.h"
 

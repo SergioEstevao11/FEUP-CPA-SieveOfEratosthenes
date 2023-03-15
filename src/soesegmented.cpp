@@ -6,9 +6,9 @@
  *      Sérgio Estêvão <up201905680@edu.fe.up.pt>
  */
 #include <bitset>
-#include <cstdint>
 #include <chrono>
 #include <cmath>
+#include <cstdint>
 #include <vector>
 #include "soehelpers.h"
 
