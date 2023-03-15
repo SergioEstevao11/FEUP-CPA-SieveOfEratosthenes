@@ -13,7 +13,7 @@
 #include "soehelpers.h"
 
 
-static constexpr std::uint64_t N = 100'000'000'000;
+static constexpr std::uint64_t N = 4'294'967'295;
 static constexpr std::uint64_t L1D_CACHE_SIZE = 32 * 1024 * 8;
 
 int 
@@ -40,7 +40,6 @@ main(void)
 
         const std::uint64_t high = std::min(N, low + segment_size - 1);
 
-        /* find the primes upto sqrt(segment limit) and compute the indexes */
         for (; k * k <= high; k += 2) {
             if (is_prime[k >> 1]) {
                 sieving_primes.emplace_back(k, k * k - low);
@@ -60,7 +59,6 @@ main(void)
             multiple = i - segment_size;
         }
 
-        /* Check the number of computed primes */
         for (; it <= high; it += 2) {
             computed += sieve[it - low];
         }

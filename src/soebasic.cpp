@@ -11,7 +11,7 @@
 #include "soehelpers.h"
 
 
-static constexpr std::uint64_t N = 100'000'000'000;
+static constexpr std::uint64_t N = 4'294'967'295;
 
 int
 main(void)
@@ -38,9 +38,6 @@ main(void)
 
     const auto end = std::chrono::steady_clock::now();
     helper.stop();
-    
-    // FIXME: pass iterators instead of containers
-    // cpa::sieve_of_erastothenes::print(primes, N, std::cerr);
 
     const auto elapsed = end - start;
     const auto computed = std::erase(primes, false);
