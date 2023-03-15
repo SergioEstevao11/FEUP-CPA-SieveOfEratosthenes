@@ -11,7 +11,7 @@ all: basic multiples segmented
 
 %: src/soe%.cpp 
 	@mkdir -p bin/
-	$(CXX) $(CXXFLAGS) $< -o bin/soe$@.out $(LDLIBS)
+	$(CXX) $(CXXFLAGS) $< -o bin/$@.out $(LDLIBS)
 
 clean:
 	$(RM) bin/*.out
