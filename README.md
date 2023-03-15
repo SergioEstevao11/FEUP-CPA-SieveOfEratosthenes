@@ -8,14 +8,18 @@ The algorithm to compute the primes up to N.
     1. We use [`g++`](https://gcc.gnu.org/) but others should work fine
 2. [PAPI](https://icl.utk.edu/papi/)
 3. [OpenMP](https://www.openmp.org/)
+    1. Only required to compile `parallel`
 4. [GNU Make](https://www.gnu.org/software/make/)
     1. *Optional* - just for compilation convinience## Usage
 
 ## Usage
 
 ```bash
-make			# builds all the targets
-sudo ./bin/soebasic.out 2> /dev/null
+make [all | basic | multiples | segmented | parallel] # builds a target
+./bin/basic.out     # naïve sieve of erastothenes
+./bin/multiples.out # fast-marking based sieve of erastothenes
+./bin/segmented.out # segmented sieve of erastothenes
+./bin/parallel.out  # parallel segmented sieve of erastothenes
 ```
 
 ---
