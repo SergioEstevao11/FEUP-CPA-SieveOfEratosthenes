@@ -5,6 +5,7 @@
  *      Miguel Rodrigues <up201906042@edu.fe.up.pt>
  *      Sérgio Estêvão <up201905680@edu.fe.up.pt>
  */
+#include <bitset>
 #include <cstdint>
 #include <chrono>
 #include <cmath>
@@ -26,9 +27,11 @@ main(void)
     constexpr std::uint64_t n_sqrt = static_cast<std::uint64_t>(std::sqrt(N));
     constexpr std::uint64_t segment_size = std::max(n_sqrt, L1D_CACHE_SIZE);
 
-    std::vector<bool> sieve(segment_size);
+    std::bitset<segment_size> sieve;
     std::vector<std::pair<std::uint64_t, std::uint64_t>> sieving_primes;
-    std::vector<bool> is_prime((n_sqrt >> 1) + 1, true);
+    std::bitset<(n_sqrt >> 1) + 1> is_prime;
+
+    is_prime.set();
 
     helper.start();
     const auto start = std::chrono::steady_clock::now();
@@ -47,7 +50,7 @@ main(void)
             }
         }
 
-        std::fill(sieve.begin(), sieve.end(), true);
+        sieve.set();
 
         for (auto& [prime, multiple] : sieving_primes) {
             std::uint64_t i = multiple;
