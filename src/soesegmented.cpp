@@ -1,15 +1,17 @@
 /*
- *  soecachewise.cpp - implementation of the sieve of erastothenes w/ lookups
+ *  soesegmented.cpp - implementation of the segmented sieve of erastothenes
  *  CPA @ M.EIC, 2023
  *  Authors:
  *      Miguel Rodrigues <up201906042@edu.fe.up.pt>
  *      Sérgio Estêvão <up201905680@edu.fe.up.pt>
  */
+#include <algorithm>
 #include <bitset>
 #include <chrono>
 #include <cmath>
 #include <cstdint>
 #include <vector>
+#include <utility>
 #include "soehelpers.h"
 
 
@@ -42,10 +44,10 @@ main(void)
 
         for (; k * k <= high; k += 2) {
             if (is_prime[k >> 1]) {
-                sieving_primes.emplace_back(k, k * k - low);
                 for (std::uint64_t i = k * k; i <= n_sqrt; i += 2 * k) {
                     is_prime[i >> 1] = false;
                 }
+                sieving_primes.emplace_back(k, k * k - low);
             }
         }
 
