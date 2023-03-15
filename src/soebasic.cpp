@@ -5,6 +5,7 @@
  *      Miguel Rodrigues <up201906042@edu.fe.up.pt>
  *      Sérgio Estêvão <up201905680@edu.fe.up.pt>
  */
+#include <algorithm>
 #include <cstdint>
 #include <chrono>
 #include <vector>
@@ -18,7 +19,7 @@ main(void)
 {
     cpa::sieve_of_erastothenes::PAPI_helper helper;
 
-    std::vector<bool> primes(N >> 1);
+    std::vector<bool> sieve(N >> 1, true);
     std::uint64_t k = 3;
 
     helper.start();
@@ -27,12 +28,12 @@ main(void)
     do {
 
         for (std::uint64_t i = k * k; i < N; i += 2) {
-            primes[i >> 1] = primes[i >> 1] || (i % k == 0);
+            sieve[i >> 1] = sieve[i >> 1] && (i % k == 0);
         }
 
         do {
             k += 2;
-        } while (k * k <= N && primes[k >> 1]);
+        } while (k * k <= N && !sieve[k >> 1]);
         
     } while (k * k <= N);
 
@@ -40,7 +41,7 @@ main(void)
     helper.stop();
 
     const auto elapsed = end - start;
-    const auto computed = std::erase(primes, false);
+    const auto computed = std::count(sieve.cbegin(), sieve.cend(), true);
     cpa::sieve_of_erastothenes::report(helper, N, computed, elapsed);
 
     return 0;
