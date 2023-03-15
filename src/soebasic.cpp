@@ -39,7 +39,8 @@ main(void)
     const auto end = std::chrono::steady_clock::now();
     helper.stop();
     
-    cpa::sieve_of_erastothenes::print(primes, N, std::cerr);
+    // FIXME: pass iterators instead of containers
+    // cpa::sieve_of_erastothenes::print(primes, N, std::cerr);
 
     const auto elapsed = end - start;
     const auto computed = std::erase(primes, false);

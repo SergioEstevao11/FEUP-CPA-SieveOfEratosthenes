@@ -98,23 +98,10 @@ report(const cpa::sieve_of_erastothenes::PAPI_helper& helper,
        const duration_t& elapsed)
 {
     std::cout << "limit: " << N << '\n'
-              << "no. of primes: " << computed << '\n'
+              << "pi(x): " << computed << '\n'
               << "duration: " << elapsed.count() << 's' << std::endl;
 
     helper.report();
-}
-
-void
-print(const std::vector<bool>& primes,
-      const std::uint64_t N,
-      std::ostream& output = std::cerr)
-{
-    for (std::uint64_t i = 1; i < N; i += 2) {
-        if (!primes[i >> 1])
-            output << i << ' ';
-    }
-
-    output << std::endl;
 }
 
 }
