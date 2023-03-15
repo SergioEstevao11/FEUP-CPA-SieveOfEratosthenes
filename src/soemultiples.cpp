@@ -11,7 +11,7 @@
 #include "soehelpers.h"
 
 
-static constexpr std::uint64_t N = 1'000'000;
+static constexpr std::uint64_t N = 1'000'000'000;
 
 int 
 main(void)
