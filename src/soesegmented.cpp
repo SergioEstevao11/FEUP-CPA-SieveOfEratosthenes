@@ -28,7 +28,7 @@ main(void)
 
     std::bitset<segment_size> sieve;
 
-    std::vector<std::pair<std::uint64_t, std::uint64_t>> sieving_primes;
+    std::vector<std::pair<std::uint64_t, std::uint64_t>> seeds;
     std::bitset<(n_sqrt >> 1) + 1> is_prime;
     is_prime.set();
 
@@ -48,16 +48,16 @@ main(void)
             for (std::uint64_t i = k * k; i <= n_sqrt; i += 2 * k) {
                 is_prime[i >> 1] = false;
             }
-            sieving_primes.emplace_back(k, k * k - low);
+            seeds.emplace_back(k, k * k - low);
         }
 
         sieve.set();
 
-        for (auto& [prime, multiple] : sieving_primes) {
-            for (std::uint64_t i = prime * 2; multiple < segment_size; multiple += i) {
-                sieve[multiple] = false;
-            }
-            multiple -= segment_size;
+        for (auto& [seed, i] : seeds) {
+            for (const auto incr = 2 * seed; i < segment_size; i += incr) {
+                sieve[i] = false;
+            }   
+            i -= segment_size;
         }
 
         for (auto i = low + 1; i <= high; i += 2) {
