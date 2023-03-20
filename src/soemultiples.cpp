@@ -42,7 +42,7 @@ main(void)
 
     const auto elapsed = end - start;
     const auto computed = std::count(sieve.cbegin(), sieve.cend(), true);
-    cpa::sieve_of_erastothenes::report(helper, N, computed, elapsed);
+    cpa::sieve_of_erastothenes::report<N>(helper, computed, elapsed);
 
     return 0;
 }

@@ -69,7 +69,7 @@ main(void)
     helper.stop();
 
     const auto elapsed = end - start;
-    cpa::sieve_of_erastothenes::report(helper, N, computed, elapsed);
+    cpa::sieve_of_erastothenes::report<N>(helper, computed, elapsed);
 
     return 0;
 }

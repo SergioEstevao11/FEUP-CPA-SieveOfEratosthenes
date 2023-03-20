@@ -10,6 +10,7 @@
 
 #include <array>
 #include <chrono>
+#include <cmath>
 #include <cstdlib>
 #include <iostream>
 #include <string_view>
@@ -91,13 +92,15 @@ private:
 };
 
 
+template<std::uint64_t N>
 void
 report(const cpa::sieve_of_erastothenes::PAPI_helper& helper,
-       const std::uint64_t N,
        const std::uint64_t computed,
        const duration_t& elapsed)
 {
+    constexpr auto OPS = static_cast<std::uint64_t>(N * std::log(std::log(N)));
     std::cout << "limit: " << N << '\n'
+              << "operations: " << OPS << '\n'
               << "pi(x): " << computed << '\n'
               << "duration: " << elapsed.count() << 's' << std::endl;
 
