@@ -17,5 +17,9 @@ parallel: src/soeparallel.cpp
 	@mkdir -p bin
 	$(CXX) $(CXXFLAGS) $< -fopenmp -o bin/$@.out $(LDLIBS)
 
+tasks: src/soetasks.cpp
+	@mkdir -p bin
+	$(CXX) $(CXXFLAGS) $< -fopenmp -o bin/$@.out $(LDLIBS)
+
 clean:
 	$(RM) bin/*.out
