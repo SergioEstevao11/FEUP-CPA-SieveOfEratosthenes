@@ -7,18 +7,10 @@ LDLIBS=-lpapi
 
 .PHONY: clean all
 
-all: basic multiples segmented parallel
+all: basic multiples segmented parallel tasks
 
 %: src/soe%.cpp 
 	@mkdir -p bin/
-	$(CXX) $(CXXFLAGS) $< -o bin/$@.out $(LDLIBS)
-
-parallel: src/soeparallel.cpp
-	@mkdir -p bin
-	$(CXX) $(CXXFLAGS) $< -fopenmp -o bin/$@.out $(LDLIBS)
-
-tasks: src/soetasks.cpp
-	@mkdir -p bin
 	$(CXX) $(CXXFLAGS) $< -fopenmp -o bin/$@.out $(LDLIBS)
 
 clean:
