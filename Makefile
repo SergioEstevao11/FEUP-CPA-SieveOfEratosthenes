@@ -7,7 +7,7 @@ LDLIBS=-lpapi
 
 .PHONY: clean all
 
-all: basic multiples segmented parallel tasks
+all: basic multiples segmented parallel tasks spmd
 
 %: src/soe%.cpp 
 	@mkdir -p bin/
