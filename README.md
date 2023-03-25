@@ -15,11 +15,13 @@ The algorithm to compute the primes up to N.
 ## Usage
 
 ```bash
-make [all | basic | multiples | segmented | parallel] # builds a target
+make [all | basic | multiples | segmented | parallel | spmd | tasks] # builds a target
 ./bin/basic.out     # naïve sieve of erastothenes
 ./bin/multiples.out # fast-marking based sieve of erastothenes
 ./bin/segmented.out # segmented sieve of erastothenes
 ./bin/parallel.out  # parallel segmented sieve of erastothenes
+./bin/spmd.out      # SPMD segmented sieve of erastothenes
+./bin/tasks.out     # parallel sieve using tasks
 ```
 
 ---
