@@ -12,7 +12,7 @@
 #include "soehelpers.h"
 
 
-static constexpr std::uint64_t N = 4'294'967'295;
+static constexpr std::uint64_t N = 33554432;
 
 int 
 main(void)

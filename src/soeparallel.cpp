@@ -16,7 +16,7 @@
 #include "soehelpers.h"
 
 
-static constexpr std::uint64_t N = 4'294'967'295;
+static constexpr std::uint64_t N = 33554432;
 static constexpr std::uint64_t L1D_CACHE_SIZE = 32 * 1024 * 8;
 static constexpr std::uint8_t NUM_THREADS = 12;
 
