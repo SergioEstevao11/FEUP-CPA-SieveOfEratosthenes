@@ -11,8 +11,8 @@
 #include <vector>
 #include "soehelpers.h"
 
-
-static constexpr std::uint64_t N = 33554432;
+/* It's probably not a good idea to test this for 2^32! */
+static constexpr std::uint64_t N = 2 << 26;
 
 int
 main(void)
@@ -28,7 +28,7 @@ main(void)
     do {
 
         for (std::uint64_t i = k * k; i < N; i += 2) {
-            sieve[i >> 1] = sieve[i >> 1] && (i % k == 0);
+            sieve[i >> 1] = sieve[i >> 1] && (i % k != 0);
         }
 
         do {
