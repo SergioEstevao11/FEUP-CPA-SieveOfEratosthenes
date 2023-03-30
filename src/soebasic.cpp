@@ -12,7 +12,7 @@
 #include "soehelpers.h"
 
 /* It's probably not a good idea to test this for 2^32! */
-static constexpr std::uint64_t N = 2 << 26;
+static constexpr std::uint64_t N = 536870912;
 
 int
 main(void)
