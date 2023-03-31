@@ -18,7 +18,7 @@
 
 static constexpr std::uint64_t N = 4294967296;
 static constexpr std::uint64_t L1D_CACHE_SIZE = 32 * 1024 * 8;
-static constexpr std::uint8_t NUM_THREADS = 5;
+static constexpr std::uint8_t NUM_THREADS = 12;
 
 int 
 main(void)

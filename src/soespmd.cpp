@@ -18,7 +18,7 @@
 
 static constexpr std::uint64_t N = 4294967296;
 static constexpr std::uint64_t L1D_CACHE_SIZE = 32 * 1024 * 8;
-static constexpr std::uint8_t NUM_THREADS = 5;
+static constexpr std::uint8_t NUM_THREADS = 12;
 
 int 
 main(void)
@@ -50,6 +50,9 @@ main(void)
             is_prime[i >> 1] = false;
         }
     }
+
+    const auto end = std::chrono::steady_clock::now();
+    helper.stop();
 
 
     #pragma omp parallel num_threads(NUM_THREADS) private(sieve) reduction(+:computed)
@@ -83,8 +86,8 @@ main(void)
         }
     }
 
-    const auto end = std::chrono::steady_clock::now();
-    helper.stop();
+    // const auto end = std::chrono::steady_clock::now();
+    // helper.stop();
 
     const auto elapsed = end - start;
     cpa::sieve_of_erastothenes::report<N>(helper, computed, elapsed);
