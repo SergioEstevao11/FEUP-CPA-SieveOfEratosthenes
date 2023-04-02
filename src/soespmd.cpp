@@ -86,8 +86,8 @@ main(void)
         }
     }
 
-    // const auto end = std::chrono::steady_clock::now();
-    // helper.stop();
+    const auto end = std::chrono::steady_clock::now();
+    helper.stop();
 
     const auto elapsed = end - start;
     cpa::sieve_of_erastothenes::report<N>(helper, computed, elapsed);
