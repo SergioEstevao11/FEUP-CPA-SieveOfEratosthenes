@@ -14,7 +14,7 @@ The algorithm to compute the primes up to N.
 
 ## Usage
 
-```console
+```sh
 make [all | basic | multiples | segmented | parallel | spmd | tasks] # builds a target
 ./bin/basic.out     # naïve sieve of erastothenes
 ./bin/multiples.out # fast-marking based sieve of erastothenes
@@ -24,8 +24,8 @@ make [all | basic | multiples | segmented | parallel | spmd | tasks] # builds a 
 ./bin/tasks.out     # parallel sieve using tasks
 ```
 
----
-Authors:
+## Authors
+
 - [Miguel Rodrigues](mailto:up201906042@edu.fe.up.pt)
 - [Sérgio Estêvão](mailto:up201905680@edu.fe.up.pt)
 
