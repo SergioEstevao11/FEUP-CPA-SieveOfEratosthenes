@@ -51,9 +51,7 @@ main(void)
         }
     }
 
-    const auto end = std::chrono::steady_clock::now();
     helper.stop();
-
 
     #pragma omp parallel num_threads(NUM_THREADS) private(sieve) reduction(+:computed)
     {
